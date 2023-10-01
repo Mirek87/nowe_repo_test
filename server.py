@@ -11,7 +11,7 @@ wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect(ssid, password)
 
-# Wait for connect or fail.
+# Wait for connect or fail
 max_wait = 10
 while max_wait > 0:
     if wlan.status() < 0 or wlan.status() >= 3:
@@ -63,12 +63,12 @@ while True:
 
         # Sprawdź, czy minęło 5 sekund od ostatniego wysłania danych
         current_time = time.time()
-        if current_time - last_send_time >= 15:
+        if current_time - last_send_time >= 30:
             # Konwertuj wilgotność na napis
             humidity_str = str(humidity)
             temperature_str = str(temperature)
             
-            # Wyślij wilgotność i temperaturę jako odpowiedź.
+            # Wyślij wilgotność i temperaturę jako odpowiedź
             response = "Wilgotność: {}% Temperatura: {}°C".format(humidity_str, temperature_str)
             cl.send(response)
             print("Wysłano dane:", response)
